@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ra.security.dto.request.FormLogin;
 import ra.security.dto.request.FormRegister;
+import ra.security.dto.response.JwtResponse;
 import ra.security.entity.Account;
 import ra.security.service.AuthenticationService;
 
@@ -19,7 +20,7 @@ public class AuthController {
     private AuthenticationService authenticationService;
 
     @PostMapping("/sign-in")
-    public ResponseEntity<Account> login(@RequestBody FormLogin request){
+    public ResponseEntity<JwtResponse> login(@RequestBody FormLogin request){
         return new ResponseEntity<>(authenticationService.login(request), HttpStatus.OK);
     }
     @PostMapping("/sign-up")
